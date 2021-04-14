@@ -1,0 +1,202 @@
+package javapackage;
+
+public interface Liber{
+	int vitMax=2022;//viti maksimal i botimit te nje libri
+	//enkapsulimi i titullit te librit
+	void setTitle(String t);
+	String getTitle();
+	//enkapsulimi i botuesit te librit
+	void setPublisher(String p);
+	String getPublisher();
+	//enkapsulimi i vitit te botimit te librit
+	void setYear(int y);
+	int getYear();
+	//enkapsulimi i kostos se librit
+	void setCost(double c);
+	double getCost();
+}
+
+
+class Enciklopedi implements Liber{
+	private String title;
+	private String author;
+	private String publisher;
+	private int year;
+	private double cost;
+	
+	Enciklopedi(String t, String a, String p, int y, double c){
+		setTitle(t);
+		setAuthor(a);
+		setPublisher(p);
+		setYear(y);
+		setCost(c);
+	}
+	public void setTitle(String t) {
+		title = t;	
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setAuthor(String a) {
+		author = a;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setPublisher(String p) {
+		publisher = p;
+	}
+	public String getPublisher() {
+		return publisher;
+	}
+	public void setYear(int y) {
+		//ne rast se enciklopedia eshte botuar pas vitit 2021 kemi exception
+		if ( y < vitMax )
+			year = y;
+		else
+			throw new IllegalArgumentException("Enciklopedia duhet te jete prodhuar para vitit 2022");
+	}
+	public int getYear() {
+		return year;
+	}
+	public void setCost(double c) {
+		//ne rast se enciklopedia kushton me pak se 0.0 kemi nje exception 
+		if ( c >= 0.0 )
+			cost = c;
+		else
+			throw new IllegalArgumentException("Kostoja e enciklopedise nuk mund te jete me pak se 0");
+	}
+	public double getCost() {
+		return cost;
+	}
+	//paraqesim te dhenat e enciklopedise duke override te metodes toString
+	public String toString(){
+		return String.format("Enciklopedia: %s\nAutori: %s\nShtepia botuese: %s\nViti i botimit: %d\nCmimi: $%,.2f",getTitle(),getAuthor(),getPublisher(),getYear(),getCost());
+	}
+}
+
+
+class Roman implements Liber{
+	private String title;
+	private String author;
+	private String award;
+	private String publisher;
+	private int year;
+	private double cost;
+	
+	Roman(String t, String a, String aw, String p, int y, double c){
+		setTitle(t);
+		setAuthor(a);
+		setAward(aw);
+		setPublisher(p);
+		setYear(y);
+		setCost(c);
+	}
+	public void setTitle(String t) {
+		title = t;	
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setAuthor(String a) {
+		author = a;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAward(String a) {
+		award = a;	
+	}
+	public String getAward() {
+		return award;
+	}
+	public void setPublisher(String p) {
+		publisher = p;
+	}
+	public String getPublisher() {
+		return publisher;
+	}
+	public void setYear(int y) {
+		//ne rast se romani eshte botuar pas vitit 2021 kemi exception
+		if ( y < vitMax )
+			year = y;
+		else
+			throw new IllegalArgumentException("Romani duhet te jete prodhuar para vitit 2022");
+	}
+	public int getYear() {
+		return year;
+	}
+	public void setCost(double c) {
+		//ne rast se romani kushton me pak se 0.0 kemi nje exception 
+		if ( c >= 0.0 )
+			cost = c;
+		else
+			throw new IllegalArgumentException("Kostoja e romanit nuk mund te jete me pak se 0");
+	}
+	public double getCost() {
+		return cost;
+	}
+	//paraqesim te dhenat e romanit duke override te metodes toString
+	public String toString(){
+		return String.format("Romani: %s\nAutori: %s\nCmimet: %s\nShtepia botuese: %s\nViti i botimit: %d\nCmimi: $%,.2f",getTitle(),getAuthor(),getAward(),getPublisher(),getYear(),getCost());
+	}
+}
+
+
+class Fjalor implements Liber{
+	private String title;
+	private String pershkrimi;
+	private String publisher;
+	private int year;
+	private double cost;
+	
+	Fjalor(String t, String per, String p, int y, double c){
+		setTitle(t);
+		setPershkrimi(per);
+		setPublisher(p);
+		setYear(y);
+		setCost(c);
+	}
+	public void setTitle(String t) {
+		title = t;	
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setPershkrimi(String p) {
+		pershkrimi = p;	
+	}
+	public String getPershkrimi() {
+		return pershkrimi;
+	}
+	public void setPublisher(String p) {
+		publisher = p;
+	}
+	public String getPublisher() {
+		return publisher;
+	}
+	public void setYear(int y) {
+		//ne rast se fjalori eshte botuar pas vitit 2021 kemi exception
+		if ( y < vitMax )
+			year = y;
+		else
+			throw new IllegalArgumentException("Fjalori duhet te jete prodhuar para vitit 2022");
+	}
+	public int getYear() {
+		return year;
+	} 
+	public void setCost(double c) {
+		//ne rast se fjalori kushton me pak se 0.0 kemi nje exception
+		if ( c >= 0.0 )
+			cost = c;
+		else
+			throw new IllegalArgumentException("Kostoja e fjalorit nuk mund te jete me pak se 0");
+	}
+	public double getCost() {
+		return cost;
+	}
+	//paraqesim te dhenat e fjalorit duke override te metodes toString
+	public String toString(){
+		return String.format("Fjalori: %s\nPershkrimi: %s\nShtepia botuese: %s\nViti i botimit: %d\nCmimi: $%,.2f",getTitle(),getPershkrimi(),getPublisher(),getYear(),getCost());
+	}
+}
